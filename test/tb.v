@@ -40,6 +40,17 @@ module tb ();
   wire VGND = 1'b0;
 `endif
 
+  // Specific outputs for Jewel:
+  // RrGgBb and H/Vsync pin ordering is per Tiny VGA PMOD
+  // (https://tinytapeout.com/specs/pinouts/#vga-output)
+  wire [1:0] rr = {uo_out[0],uo_out[4]};
+  wire [1:0] gg = {uo_out[1],uo_out[5]};
+  wire [1:0] bb = {uo_out[2],uo_out[6]};
+  wire [5:0] rgb = {rr,gg,bb}; // Just used by cocotb test bench for convenient checks.
+  wire hsync_n    = uo_out[7];
+  wire vsync_n    = uo_out[3];
+
+
   // Replace tt_um_example with your module name:
   tt_um_algofoogle_jewel user_project (
 
