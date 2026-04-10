@@ -54,7 +54,7 @@ jobs:
           cd test
           mkdir frames_out/png
           cd frames_out
-          ../animate.sh png && cd png && tar czf ../frames-rtl.tgz *.png
+          bash ../animate.sh png && cd png && tar czf ../frames-rtl.tgz *.png
 
       - name: Convert output frames from PPMs to animated GIF
         if: success() || failure() # Run this even if the step above fails.
@@ -64,7 +64,7 @@ jobs:
           ls -al
           cd test
           cd frames_out
-          ../animate.sh frames-rtl.gif
+          bash ../animate.sh frames-rtl.gif
 
       - name: Store frame output files
         if: success() || failure()

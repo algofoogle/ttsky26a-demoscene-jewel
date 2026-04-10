@@ -36,7 +36,7 @@ async def async_run_all(steps):
 @cocotb.test()
 async def test_frames(dut):
     """
-    Generate a number of full video frames and write to rbz_basic_frame-###.ppm
+    Generate a number of full video frames and write to frames_out/frame-###.ppm
     """
 
     dut._log.info("Starting test_frames...")
